@@ -30,6 +30,7 @@ while True:
             y2 = (row + 1) * 90 + 105
             cv2.rectangle(frame, (x1, y1), (x2, y2), (255, 255, 255), 1)
 
+    cv2.putText(frame, "Press 'q' to quit", (29, 31), cv2.FONT_HERSHEY_SIMPLEX, 1.01, (0, 0, 0), 5)
     cv2.putText(frame, "Press 'q' to quit", (30, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
     cv2.imshow("Robot Eye - press 'q' to quit", frame)
 
