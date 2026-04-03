@@ -1,0 +1,1 @@
+# Gonna put here constants to make camera work on every resolution

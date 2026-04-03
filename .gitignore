@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+solves.csv
+.env
+venv/
+.pytest_cache/
+
+# Will need to check it later
