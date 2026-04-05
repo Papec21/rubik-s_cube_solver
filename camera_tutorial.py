@@ -30,41 +30,12 @@ while True:
     if not ret:
         print("Error: Could not receive frame.")
         break
-
-    # Convert BGR to HSV color code
-    # hsvFrame = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
-
-    # Gotta add all colors :(((
-    # Colors (Gotta move them to config later)
-    '''white_lower = np.array([0, 0, 150], np.uint8)
-    white_upper = np.array([180, 50, 255], np.uint8)
-
-    yellow_lower = np.array([20, 100, 150], np.uint8)
-    yellow_upper = np.array([35, 255, 255], np.uint8)
-
-    green_lower = np.array([40, 100, 150], np.uint8)
-    green_upper = np.array([80, 255, 255], np.uint8)
-
-    blue_lower = np.array([100, 100, 150], np.uint8)
-    blue_upper = np.array([130, 255, 255], np.uint8)
-
-    orange_lower = np.array([10, 100, 150], np.uint8)
-    orange_upper = np.array([20, 255, 255], np.uint8)
-
-    red_lower = np.array([0, 100, 150], np.uint8)
-    red_upper = np.array([10, 255, 255], np.uint8)'''
-
-    # white_mask = cv2.inRange(hsvFrame, white_lower, white_upper)
-
-    # white_mask = cv2.dilate(white_mask, kernal)
-    # res_white = cv2.bitwise_and(frame, frame, mask=white_mask)  
     
     # width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
     # height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
     # print(f"Current Resolution: {width}x{height}")
 
     # Need a formula to make it scalable to every resolution
-    # cv2.rectangle(frame, (185, 105), (455, 375), (252, 3, 211), 1)
     for row in range(3):
         for col in range(3):
             x1 = col * 90 + 185
