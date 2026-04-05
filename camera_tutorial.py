@@ -24,9 +24,25 @@ while True:
     # Convert BGR to HSV color code
     # hsvFrame = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 
+    # Gotta add all colors :(((
     # Colors (Gotta move them to config later)
-    white_lower = np.array([0, 0, 210], np.uint8)
+    white_lower = np.array([0, 0, 150], np.uint8)
     white_upper = np.array([180, 50, 255], np.uint8)
+
+    yellow_lower = np.array([20, 100, 150], np.uint8)
+    yellow_upper = np.array([35, 255, 255], np.uint8)
+
+    green_lower = np.array([40, 100, 150], np.uint8)
+    green_upper = np.array([80, 255, 255], np.uint8)
+
+    blue_lower = np.array([100, 100, 150], np.uint8)
+    blue_upper = np.array([130, 255, 255], np.uint8)
+
+    orange_lower = np.array([10, 100, 150], np.uint8)
+    orange_upper = np.array([20, 255, 255], np.uint8)
+
+    red_lower = np.array([0, 100, 150], np.uint8)
+    red_upper = np.array([10, 255, 255], np.uint8)
     # white_mask = cv2.inRange(hsvFrame, white_lower, white_upper)
 
     # Reduce color noise
@@ -62,7 +78,7 @@ while True:
             # If it's white enough we add "W" to kociemba_notation
             if pixel_count > 4100:
                 cv2.putText(frame, "W", (x1 + 30, y1 + 60), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 2)
-                kociemba_scramble.append("W")
+                # kociemba_scramble.append("W")
 
     cv2.putText(frame, "Press 'q' to quit", (29, 31), cv2.FONT_HERSHEY_SIMPLEX, 1.01, (0, 0, 0), 5)
     cv2.putText(frame, "Press 'q' to quit", (30, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
