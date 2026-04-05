@@ -1,6 +1,16 @@
 import cv2
 import numpy as np
 
+# Need to make red and orange easier to distinguish
+colors = {
+    "white": ([0, 0, 150], [180, 50, 255]),
+    "yellow": ([20, 100, 150], [35, 255, 255]),
+    "green": ([40, 100, 150], [80, 255, 255]),
+    "blue": ([100, 100, 150], [130, 255, 255]),
+    "orange": ([10, 100, 150], [20, 255, 255]),
+    "red": ([0, 100, 150], [9, 255, 255])
+}
+
 # Storage for notation
 kociemba_scramble = []
 
@@ -26,7 +36,7 @@ while True:
 
     # Gotta add all colors :(((
     # Colors (Gotta move them to config later)
-    white_lower = np.array([0, 0, 150], np.uint8)
+    '''white_lower = np.array([0, 0, 150], np.uint8)
     white_upper = np.array([180, 50, 255], np.uint8)
 
     yellow_lower = np.array([20, 100, 150], np.uint8)
@@ -42,11 +52,9 @@ while True:
     orange_upper = np.array([20, 255, 255], np.uint8)
 
     red_lower = np.array([0, 100, 150], np.uint8)
-    red_upper = np.array([10, 255, 255], np.uint8)
-    # white_mask = cv2.inRange(hsvFrame, white_lower, white_upper)
+    red_upper = np.array([10, 255, 255], np.uint8)'''
 
-    # Reduce color noise
-    kernal = np.ones((5, 5), "uint8")
+    # white_mask = cv2.inRange(hsvFrame, white_lower, white_upper)
 
     # white_mask = cv2.dilate(white_mask, kernal)
     # res_white = cv2.bitwise_and(frame, frame, mask=white_mask)  
@@ -69,15 +77,19 @@ while True:
             # Frames inside rectangles
             roi = frame[y1:y2, x1:x2]
             roi_hsv = cv2.cvtColor(roi, cv2.COLOR_BGR2HSV)
-            mask = cv2.inRange(roi_hsv, white_lower, white_upper)
-            mask = cv2.dilate(mask, kernal)
+
+            for color_name, (lower, upper) in colors.items():
+                lower_color = np.array(lower, dtype="uint8")
+                upper_color = np.array(upper, dtype="uint8")
+
+                mask = cv2.inRange(roi_hsv, lower_color, upper_color)
 
             # Counting every white enough pixel
-            pixel_count = cv2.countNonZero(mask)
+                pixel_count = cv2.countNonZero(mask)
             
             # If it's white enough we add "W" to kociemba_notation
-            if pixel_count > 4100:
-                cv2.putText(frame, "W", (x1 + 30, y1 + 60), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 2)
+                if pixel_count > 4100:
+                    cv2.putText(frame, color_name, (x1 + 30, y1 + 60), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 2)
                 # kociemba_scramble.append("W")
 
     cv2.putText(frame, "Press 'q' to quit", (29, 31), cv2.FONT_HERSHEY_SIMPLEX, 1.01, (0, 0, 0), 5)
