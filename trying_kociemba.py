@@ -8,7 +8,7 @@ try:
     # Solve it
     solution = kociemba.solve(scrambled_cube)
     
-    print("--- Solver Online ---")
+    print("Purrr Purrr Purrr :#33333")
     print(f"Cube State: {scrambled_cube}")
     print(f"Solution:   {solution}")
     

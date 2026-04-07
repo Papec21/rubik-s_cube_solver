@@ -11,6 +11,9 @@ colors = {
     "red": ([0, 100, 150], [9, 255, 255])
 }
 
+# Walls of rubik's cube
+walls = ["chuj"]
+
 # Storage for notation
 kociemba_scramble = []
 
@@ -59,9 +62,10 @@ while True:
                 pixel_count = cv2.countNonZero(mask)
             
             # If it's white enough we add "W" to kociemba_notation
-                if pixel_count > 4100:
-                    cv2.putText(frame, color_name, (x1 + 30, y1 + 60), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 2)
+                if pixel_count > 3100:
+                    cv2.putText(frame, color_name[:3], (x1 + 30, y1 + 60), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 2)
                 # kociemba_scramble.append("W")
+
 
     cv2.putText(frame, "Press 'q' to quit", (29, 31), cv2.FONT_HERSHEY_SIMPLEX, 1.01, (0, 0, 0), 5)
     cv2.putText(frame, "Press 'q' to quit", (30, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
